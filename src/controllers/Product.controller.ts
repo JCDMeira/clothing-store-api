@@ -21,4 +21,17 @@ export class ProductController {
       return res.status(500).json({ message: 'Unknown error' });
     }
   }
+
+  static async Update(req: Request, res: Response) {
+    console.log(req);
+  }
+  static async FindAll(req: Request, res: Response) {
+    console.log(req);
+  }
+  static async FindOne(req: Request, res: Response) {
+    console.log(req);
+  }
+  static async Delete(req: Request, res: Response) {
+    console.log(req);
+  }
 }

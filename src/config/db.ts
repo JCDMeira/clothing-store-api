@@ -14,4 +14,4 @@ const db = mongoose.connection;
 db.on('error', console.log.bind(console, 'Connection error'));
 db.once('opne', () => console.log('sucessfull connection'));
 
-export { db };
+export default db;

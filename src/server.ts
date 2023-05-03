@@ -1,11 +1,5 @@
-import express from 'express';
+import app from './app';
 
-const app = express();
+const port = process.env.PORT || '3333';
 
-app.use(express.json());
-
-app.get('/', (req, res) => res.status(200).json({ message: 'Hello world' }));
-
-app.listen('3333', () => 'hello world');
-
-export { app };
+app.listen(port);

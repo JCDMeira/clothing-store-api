@@ -22,16 +22,49 @@ export class ProductController {
     }
   }
 
-  static async Update(req: Request, res: Response) {
-    console.log(req);
-  }
   static async FindAll(req: Request, res: Response) {
-    console.log(req);
+    try {
+      const products = await ProductModel.find({}, { __v: 0 });
+
+      return res.status(200).json({ products });
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        return res.status(400).json({ message: error.message });
+      }
+      return res.status(500).json({ message: 'Unknown error' });
+    }
   }
+
   static async FindOne(req: Request, res: Response) {
-    console.log(req);
+    try {
+      console.log(req);
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        return res.status(400).json({ message: error.message });
+      }
+      return res.status(500).json({ message: 'Unknown error' });
+    }
   }
+
+  static async Update(req: Request, res: Response) {
+    try {
+      console.log(req);
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        return res.status(400).json({ message: error.message });
+      }
+      return res.status(500).json({ message: 'Unknown error' });
+    }
+  }
+
   static async Delete(req: Request, res: Response) {
-    console.log(req);
+    try {
+      console.log(req);
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        return res.status(400).json({ message: error.message });
+      }
+      return res.status(500).json({ message: 'Unknown error' });
+    }
   }
 }

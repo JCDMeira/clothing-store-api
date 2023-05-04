@@ -54,7 +54,9 @@ export class ProductController {
       const { id } = req.params;
       const body = req.body;
 
-      await ProductModel.findByIdAndUpdate(id, { ...body });
+      const product = await ProductModel.findByIdAndUpdate(id, { ...body });
+
+      if (product === null) throw new Error('Product not found');
 
       return res.status(200).json({ message: 'Product updated successfully' });
     } catch (error: unknown) {
@@ -67,7 +69,11 @@ export class ProductController {
 
   static async Delete(req: Request, res: Response) {
     try {
-      console.log(req);
+      const { id } = req.params;
+
+      await ProductModel.findByIdAndDelete(id);
+
+      return res.status(200).json({ message: 'Product deleted successfully' });
     } catch (error: unknown) {
       if (error instanceof Error) {
         return res.status(400).json({ message: error.message });

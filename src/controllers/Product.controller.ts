@@ -37,7 +37,10 @@ export class ProductController {
 
   static async FindOne(req: Request, res: Response) {
     try {
-      console.log(req);
+      const { id } = req.params;
+      const product = await ProductModel.findById({ _id: id }, { __v: 0 });
+
+      return res.status(200).json(product);
     } catch (error: unknown) {
       if (error instanceof Error) {
         return res.status(400).json({ message: error.message });

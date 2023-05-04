@@ -51,7 +51,12 @@ export class ProductController {
 
   static async Update(req: Request, res: Response) {
     try {
-      console.log(req);
+      const { id } = req.params;
+      const body = req.body;
+
+      await ProductModel.findByIdAndUpdate(id, { ...body });
+
+      return res.status(200).json({ message: 'Product updated successfully' });
     } catch (error: unknown) {
       if (error instanceof Error) {
         return res.status(400).json({ message: error.message });

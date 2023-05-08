@@ -26,7 +26,7 @@ export class ProductController {
     try {
       const products = await ProductModel.find({}, { __v: 0 });
 
-      return res.status(200).json({ products });
+      return res.status(200).json(products);
     } catch (error: unknown) {
       if (error instanceof Error) {
         return res.status(400).json({ message: error.message });
